@@ -19,4 +19,37 @@ router.get('/last.txt', function(req, res, next) {
   }
 });
 
+var counter2 = 0;
+var color;
+router.get('/color.html', function(req, res, next) {
+    switch (counter2) {
+      case 0:
+        color = "red";
+        break;
+      case 1:
+        color = "yellow";
+        break;
+      case 2:
+        color = "green";
+        break;
+      case 3:
+        color = "blue";
+        break;
+    }
+    res.send(
+      `<!DOCTYPE html>
+      <html lang="en">
+          <head>
+              <title>A title</title>
+          </head>
+
+          <body>
+              <h1 style="color:${color};">${color}</h1>
+          </body>
+      </html>`
+    );
+    counter2++;
+    counter2 = counter2 % 4;
+});
+
 module.exports = router;
