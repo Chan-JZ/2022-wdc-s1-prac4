@@ -52,4 +52,27 @@ router.get('/color.html', function(req, res, next) {
     counter2 = counter2 % 4;
 });
 
+let colorCounter2 = 0;
+let color2 = "";
+router.get('/color.txt', function(req, res, next) {
+  let curCounter = colorCounter2 % 4;
+  colorCounter2++;
+  switch (curCounter) {
+    case 0:
+      color2 = "red";
+      break;
+    case 1:
+      color2 = "yellow";
+      break;
+    case 2:
+      color2 = "green";
+      break;
+    case 3:
+      color2 = "blue";
+      break;
+  }
+  res.send(color2);
+});
+
+
 module.exports = router;
