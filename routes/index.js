@@ -37,7 +37,16 @@ router.get('/color.html', function(req, res, next) {
         break;
     }
     res.send(
+      `<!DOCTYPE html>
+      <html lang="en">
+          <head>
+              <title>A title</title>
+          </head>
 
+          <body>
+              <h1 style="color:${color};">${color}</h1>
+          </body>
+      </html>`
     );
     counter2++;
     counter2 = counter2 % 4;
