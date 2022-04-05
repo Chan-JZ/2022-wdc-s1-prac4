@@ -52,15 +52,14 @@ router.get('/color.html', function(req, res, next) {
     counter2 = counter2 % 4;
 });
 
-var dateArr1 = [];
-router.get('/log.html', function (req, res, next) {
-  dateArr1.push(Date());
-  for (let i in dateArr1) {
-    console.log(dateArr1[i]);
-  }
-  res.send(JSON.stringify(dateArr1));
-  // res.send("HeeHaa");
-});
+// var dateArr1 = [];
+// router.get('/log.html', function (req, res, next) {
+//   dateArr1.push(Date());
+//   for (let i in dateArr1) {
+//     console.log(dateArr1[i]);
+//   }
+//   res.send(JSON.stringify(dateArr1));
+// });
 
 let colorCounter2 = 0;
 let color2 = "";
