@@ -36,18 +36,18 @@ router.get('/color.html', function(req, res, next) {
         color = "blue";
         break;
     }
-    res.send(
-      `<!DOCTYPE html>
-      <html lang="en">
-          <head>
-              <title>A title</title>
-          </head>
+    // res.send(
+    //   `<!DOCTYPE html>
+    //   <html lang="en">
+    //       <head>
+    //           <title>A title</title>
+    //       </head>
 
-          <body>
-              <h1 style="color:${color};">${color}</h1>
-          </body>
-      </html>`
-    );
+    //       <body>
+    //           <h1 style="color:${color};">${color}</h1>
+    //       </body>
+    //   </html>`
+    // );
     counter2++;
     counter2 = counter2 % 4;
 });
