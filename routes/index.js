@@ -15,7 +15,7 @@ router.get('/last.txt', function(req, res, next) {
   else {
     counter++;
     var time = new Date();
-    res.send(time);
+    res.send(time.toString());
   }
 });
 
@@ -50,6 +50,16 @@ router.get('/color.html', function(req, res, next) {
     );
     counter2++;
     counter2 = counter2 % 4;
+});
+
+var dateArr1 = [];
+router.get('/log.html', function (req, res, next) {
+  dateArr1.push(Date());
+  for (let i in dateArr1) {
+    console.log(dateArr1[i]);
+  }
+  res.send(JSON.stringify(dateArr1));
+  // res.send("HeeHaa");
 });
 
 let colorCounter2 = 0;
