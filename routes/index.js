@@ -56,7 +56,8 @@ let colorCounter2 = 0;
 let color2 = "";
 router.get('/color.txt', function(req, res, next) {
   let curCounter = colorCounter2 % 4;
-  colorCounter2++;
+  colorCounter2++;  
+  console.log(curCounter);
   switch (curCounter) {
     case 0:
       color2 = "red";
