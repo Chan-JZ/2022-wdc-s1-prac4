@@ -43,3 +43,49 @@ function updateLog() {
     }
     xhr3.send();
 }
+
+
+function timerStart() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/log.json', true);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let dateArr = JSON.parse(this.responseText);
+            console.log(dateArr[0]);
+            let list = document.getElementById("list2");
+            
+            for (let i in dateArr) {
+                let element = document.createElement("li");
+                element.innerHTML = dateArr[i];
+                list.appendChild(element);
+            }
+        }
+    }
+    xhr.send();
+    setTimeout(updateLog2, 10000);
+}
+
+function updateLog2() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/log-ro.json', true);
+    xhr.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            let dateArr = JSON.parse(this.responseText);
+            console.log(dateArr[0]);
+            let list = document.getElementById("list2");
+            
+            let child = list.lastElementChild;
+            while (child) {
+                list.removeChild(child);
+                child = list.lastElementChild;
+            }
+
+            for (let i in dateArr) {
+                let element = document.createElement("li");
+                element.innerHTML = dateArr[i];
+                list.appendChild(element);
+            }
+        }
+    }
+    xhr.send();
+}

@@ -84,5 +84,15 @@ router.get('/color.txt', function(req, res, next) {
   res.send(color2);
 });
 
+let dateArr2 = [];
+router.get('/log.json', function(req, res, next) {
+  dateArr2.push(Date().toString());
+  console.log(dateArr2.length);
+  res.send(JSON.stringify(dateArr2));
+});
+
+router.get('/log-ro.json', function(req, res, next) {
+  res.send(JSON.stringify(dateArr2));
+});
 
 module.exports = router;
