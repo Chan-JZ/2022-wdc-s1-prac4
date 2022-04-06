@@ -108,4 +108,17 @@ router.get('/log-ro.json', function(req, res, next) {
   res.send(JSON.stringify(dateArr2));
 });
 
+let acceptCounter = 0;
+router.get('/accept', function(req, res, next) {
+  acceptCounter++;
+  res.sendStatus(200);
+});
+
+let paragraphs = ["<p> How much wood would a wood chuck chuck if a wood chuck would chuck wood </p>", "<p> Idk </p>"];
+router.get('/content.ajax', function(req, res, next) {
+  if (acceptCounter == 0) res.sendStatus(403);
+  else {
+    res.send(JSON.stringify(paragraphs));
+  }
+});
 module.exports = router;

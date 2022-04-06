@@ -25,18 +25,6 @@ function changeColor2() {
     xhr2.send();
 }
 
-// function updateLog() {
-//     let xhr3 = new XMLHttpRequest();
-//     xhr3.open('GET', '/log.html', true);
-//     xhr3.onreadystatechange = function() {
-//         if (this.readyState == 4 && this.status == 200) {
-            
-//         }
-//     }
-//     xhr3.send();
-// }
-
-
 function timerStart() {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', '/log.json', true);
@@ -80,4 +68,52 @@ function updateLog2() {
         }
     }
     xhr.send();
+}
+
+function testFunc() {
+
+}
+
+function callContentAjax() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', '/content.ajax', true);
+    xhr.onreadystatechange = function() {
+        console.log(this.status);
+        console.log(this.responseText);
+
+        let main = document.getElementById("body");
+        if (this.readyState == 4 && this.status == 200) {
+            let lastChild = main.lastElementChild;
+            while (lastChild) {
+                main.removeChild(lastChild);
+                lastChild = main.lastElementChild;
+            }
+            let p1 = document.createElement("p");
+            let p2 = document.createElement("p");
+            let paragraphsArr = JSON.parse(this.responseText);
+            p1.innerHTML = paragraphsArr[0];
+            p2.innerHTML = paragraphsArr[1];
+            main.appendChild(p1);
+            main.appendChild(p2);       
+        } else if (this.readyState == 4 && this.status == 403) {
+            console.log("This page is forbidden");
+            let terms = document.createElement("p");
+            terms.innerHTML = "Do you agree to the Terms and Conditions?"
+            let button = document.createElement("button");
+            button.innerHTML = "Agree";
+            button.addEventListener("click", function() {
+                let xhr2 = new XMLHttpRequest();
+                xhr2.open('GET', '/accept', true);
+                xhr2.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        callContentAjax();
+                    }
+                }
+                xhr2.send(); 
+            });
+            main.appendChild(terms);
+            main.appendChild(button);
+        }
+    }
+    xhr.send(); 
 }
