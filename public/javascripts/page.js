@@ -25,24 +25,16 @@ function changeColor2() {
     xhr2.send();
 }
 
-function updateLog() {
-    let xhr3 = new XMLHttpRequest();
-    xhr3.open('GET', '/log.html', true);
-    xhr3.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            let dateArr = JSON.parse(this.responseText);
-            console.log(dateArr[0]);
-            let list = document.getElementById("list");
+// function updateLog() {
+//     let xhr3 = new XMLHttpRequest();
+//     xhr3.open('GET', '/log.html', true);
+//     xhr3.onreadystatechange = function() {
+//         if (this.readyState == 4 && this.status == 200) {
             
-            for (let i in dateArr) {
-                let element = document.createElement("li");
-                element.innerHTML = dateArr[i];
-                list.appendChild(element);
-            }
-        }
-    }
-    xhr3.send();
-}
+//         }
+//     }
+//     xhr3.send();
+// }
 
 
 function timerStart() {
