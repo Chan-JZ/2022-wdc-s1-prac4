@@ -83,10 +83,8 @@ function callContentAjax() {
 
         let main = document.getElementById("body");
         if (this.readyState == 4 && this.status == 200) {
-            let lastChild = main.lastElementChild;
-            while (lastChild) {
-                main.removeChild(lastChild);
-                lastChild = main.lastElementChild;
+            while (main.children.length > 1) {
+                main.children[1].remove();
             }
             let p1 = document.createElement("p");
             let p2 = document.createElement("p");
